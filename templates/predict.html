@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Prediction Results</title>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+   <h1>Prediction Results</h1>
+       <p>Image  caption: {{ predictions }}</p>
+       <p>Decision is : {{ classifications }}</p>
+       {% for filename in filenames %}
+       <img src="{{ url_for('static', filename='images/' + filename) }}" alt="{{ filename }}">
+       {% endfor %}
+   <h1>USV Scene Understanding</h1>
+   <form method="POST" enctype="multipart/form-data" action="/upload">
+       <input type="file" name="images" multiple>
+       <input type="submit" value="Predict">
+   </form>
+</body>
+</html>
